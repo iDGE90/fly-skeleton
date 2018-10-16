@@ -24,7 +24,7 @@ export class CoreService {
   }
 
   profile(id) {
-    return this.http.get(environment.baseUrl + 'asd/users/' + id);
+    return this.http.get(environment.baseUrl + 'users/' + id);
       // .pipe(catchError(this.appErrorHandler.handleError));
   }
 
