@@ -1,0 +1,7 @@
+<h4>Login</h4>
+
+<form [formGroup]="loginForm" (submit)="submit()">
+  <input formControlName="email">
+  <input type="password" formControlName="password">
+  <button>Login</button>
+</form>

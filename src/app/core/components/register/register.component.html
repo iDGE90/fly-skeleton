@@ -1,0 +1,7 @@
+<h4>Register</h4>
+
+<form [formGroup]="registerForm" (submit)="submit()">
+  <input formControlName="email">
+  <input type="password" formControlName="password">
+  <button>Register</button>
+</form>

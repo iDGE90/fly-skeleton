@@ -1,0 +1,29 @@
+<div class="navigation-container">
+  <div class="navigation-wrapper main-wrapper">
+    <div class="navigation-links-container">
+      <div class="navigation-links-wrapper">
+        <div class="home-link">
+          <a routerLink="/">fly-skeleton</a>
+        </div>
+
+        <div class="user-links">
+          <ng-container *ngIf="!user">
+            <a routerLink="/register">Register</a>
+            <a routerLink="/login">Login</a>
+          </ng-container>
+
+          <ng-container *ngIf="user">
+            <div class="logout">
+              <span (click)="logout()">Logout</span>
+            </div>
+
+            <a class="user-image" routerLink="/profile">
+              <span>{{user?.first_name}}</span>
+              <img [src]="user?.avatar" [alt]="user?.first_name">
+            </a>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
