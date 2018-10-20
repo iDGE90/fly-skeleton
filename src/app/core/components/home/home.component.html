@@ -1,1 +1,17 @@
-<pre>{{list | json}}</pre>
+<div class="container grid-md">
+  <h5 class="text-center">Home</h5>
+
+  <app-loading *ngIf="working"></app-loading>
+
+  <div class="tile" *ngFor="let item of list">
+    <div class="tile-icon">
+      <div class="example-tile-icon">
+        <figure class="avatar avatar-xl" [attr.data-initial]="item.name[0] + item.name[1]" [style.backgroundColor]="item.color"></figure>
+      </div>
+    </div>
+    <div class="tile-content">
+      <p class="tile-title" style="margin-bottom: 5px;">{{item.name}}</p>
+      <p class="tile-subtitle text-gray">Year {{item.year}}, pantone value {{item.pantone_value}}, color {{item.color}}</p>
+    </div>
+  </div>
+</div>

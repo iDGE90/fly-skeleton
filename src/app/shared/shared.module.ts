@@ -19,6 +19,7 @@ import {LoadingComponent} from './components/loading/loading.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    LoadingComponent
   ]
 })
 export class SharedModule {

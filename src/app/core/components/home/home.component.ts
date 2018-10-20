@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private coreService: CoreService) { }
 
   ngOnInit() {
-    this.working = false;
+    this.working = true;
 
     this.coreService.list().subscribe((res: any) => {
       this.list = res.data;

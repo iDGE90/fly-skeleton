@@ -1,29 +1,38 @@
-<div class="navigation-container">
-  <div class="navigation-wrapper main-wrapper">
-    <div class="navigation-links-container">
-      <div class="navigation-links-wrapper">
-        <div class="home-link">
-          <a routerLink="/">fly-skeleton</a>
-        </div>
+<div class="container grid-xl" style="margin-bottom: 50px;">
+  <header class="navbar">
+    <section class="navbar-section">
+      <a href="#" class="btn btn-link">GitHub</a>
+    </section>
 
-        <div class="user-links">
-          <ng-container *ngIf="!user">
-            <a routerLink="/register">Register</a>
-            <a routerLink="/login">Login</a>
-          </ng-container>
+    <section class="navbar-center">
+      <a routerLink="/" class="btn btn-link">Fly Skeleton</a>
+    </section>
 
-          <ng-container *ngIf="user">
-            <div class="logout">
-              <span (click)="logout()">Logout</span>
-            </div>
+    <section class="navbar-section">
+      <ng-container *ngIf="!user">
+        <a routerLink="/register" class="btn btn-link">Register</a>
+        <a routerLink="/login" class="btn btn-link">Login</a>
+      </ng-container>
 
-            <a class="user-image" routerLink="/profile">
+      <ng-container *ngIf="user">
+        <div class="dropdown">
+          <a class="btn btn-link dropdown-toggle" tabindex="0">
+            <div class="chip">
+              <img [src]="user?.avatar" class="avatar avatar-sm" [alt]="user?.first_name">
               <span>{{user?.first_name}}</span>
-              <img [src]="user?.avatar" [alt]="user?.first_name">
-            </a>
-          </ng-container>
+            </div>
+          </a>
+
+          <ul class="menu" style="left: auto; right: 0;">
+            <li class="menu-item">
+              <a routerLink="/profile">Profile</a>
+            </li>
+            <li class="menu-item">
+              <a class="c-hand" (click)="logout()">Logout</a>
+            </li>
+          </ul>
         </div>
-      </div>
-    </div>
-  </div>
+      </ng-container>
+    </section>
+  </header>
 </div>

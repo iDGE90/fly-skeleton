@@ -1,1 +1,30 @@
-<pre>{{user | json}}</pre>
+<div class="container grid-md">
+  <ul class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a routerLink="/profile">Profile</a>
+    </li>
+  </ul>
+
+  <app-loading *ngIf="working"></app-loading>
+
+  <div *ngIf="!working" class="panel">
+    <div class="panel-header text-center">
+      <figure class="avatar avatar-lg">
+        <img [src]="user?.avatar" alt="Avatar">
+      </figure>
+      <div class="panel-title h5 mt-10">{{user?.first_name}} {{user?.last_name}}</div>
+    </div>
+
+    <div class="panel-body">
+      <div class="tile text-center mb-2">
+        <div class="tile-content">
+          <div class="tile-title text-bold">E-mail</div>
+          <div class="tile-subtitle">example@mail.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

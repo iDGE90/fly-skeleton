@@ -9,29 +9,22 @@ import {AppErrorHandler} from 'core/services/app-error-handler.service';
 })
 export class CoreService {
 
-  constructor(private http: HttpClient,
-              private appErrorHandler: AppErrorHandler) {
+  constructor(private http: HttpClient) {
   }
 
   login(data) {
     return this.http.post(environment.baseUrl + 'login', data);
-      // .pipe(catchError(this.appErrorHandler.handleError));
   }
 
   register(data) {
     return this.http.post(environment.baseUrl + 'register', data);
-      // .pipe(catchError(this.appErrorHandler.handleError));
   }
 
   profile(id) {
     return this.http.get(environment.baseUrl + 'users/' + id);
-      // .pipe(catchError(this.appErrorHandler.handleError));
   }
 
   list() {
-    return this.http.get(environment.baseUrl + 'unknown/23');
-      // .pipe(catchError(this.appErrorHandler.handleError));
+    return this.http.get(environment.baseUrl + 'unknown');
   }
-
-  // TODO: dry this catches
 }
