@@ -12,6 +12,8 @@ import {AppError} from '../errors/app-error';
 })
 export class AppErrorHandler implements ErrorHandler {
   handleError(error) {
+    console.log('App error handler: ', error);
+
     if (error) {
       if (error.status === 400) {
         return throwError(new BadRequest(error));

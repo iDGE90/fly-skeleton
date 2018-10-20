@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CoreService} from '../../services/core.service';
-import {AppError} from 'shared/errors/app-error';
+import {AppError} from 'core/errors/app-error';
 
 @Component({
   selector: 'app-home',

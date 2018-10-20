@@ -1,17 +1,17 @@
 import {APP_BOOTSTRAP_LISTENER, ComponentRef, ErrorHandler, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {CoreModule} from './core/core.module';
+import {CoreModule} from 'core/core.module';
 import {RouterModule} from '@angular/router';
-import {AppErrorHandler} from 'shared/services/app-error-handler.service';
-import {AppBootstrap} from 'shared/services/app-bootstrap.service';
-import {TokenInterceptor} from 'shared/interceptors/token.interceptor';
+import {AppErrorHandler} from 'core/services/app-error-handler.service';
+import {AppBootstrap} from 'core/services/app-bootstrap.service';
+import {TokenInterceptor} from 'core/interceptors/token.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {UnauthorizedInterceptor} from 'shared/interceptors/unauthorized.interceptor';
+import {ErrorsInterceptor} from 'core/interceptors/errors.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +27,7 @@ import {UnauthorizedInterceptor} from 'shared/interceptors/unauthorized.intercep
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: UnauthorizedInterceptor,
+      useClass: ErrorsInterceptor,
       multi: true
     },
     {

@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {LoadingComponent} from './components/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,9 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  declarations: [],
+  declarations: [
+    LoadingComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,

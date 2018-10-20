@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {CoreService} from '../../core/services/core.service';
-import {AuthenticateService} from 'shared/services/authenticate.service';
-import {AppError} from 'shared/errors/app-error';
+import {CoreService} from './core.service';
+import {AuthenticateService} from 'src/app/core/services/authenticate.service';
+import {AppError} from 'core/errors/app-error';
 
 @Injectable({
   providedIn: 'root'

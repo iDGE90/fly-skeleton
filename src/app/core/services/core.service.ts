@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {catchError} from 'rxjs/internal/operators';
-import {AppErrorHandler} from 'shared/services/app-error-handler.service';
+import {AppErrorHandler} from 'core/services/app-error-handler.service';
 
 @Injectable({
   providedIn: 'root'

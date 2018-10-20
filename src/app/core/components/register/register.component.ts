@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CoreService} from '../../services/core.service';
-import {AppError} from 'shared/errors/app-error';
+import {AppError} from 'core/errors/app-error';
 
 @Component({
   selector: 'app-register',
