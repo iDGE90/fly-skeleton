@@ -13,19 +13,19 @@ export class CoreService {
   constructor(private http: HttpClient) {
   }
 
-  login(data): Observable {
+  login(data): Observable<Object> {
     return this.http.post(environment.baseUrl + 'login', data);
   }
 
-  register(data): Observable {
+  register(data): Observable<Object> {
     return this.http.post(environment.baseUrl + 'register', data);
   }
 
-  profile(): Observable {
+  profile(): Observable<Object> {
     return this.http.get(environment.baseUrl + 'users/1');
   }
 
-  list(): Observable {
+  list(): Observable<Object> {
     return this.http.get(environment.baseUrl + 'unknown');
   }
 }
