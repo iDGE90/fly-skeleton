@@ -16,13 +16,13 @@ export class AppBootstrap {
     const token = this.auth.token;
 
     if (token) {
-      this.auth.validatingUser = true;
+      this.auth.isUserValidationInProgress = true;
 
-      this.coreService.profile(1).subscribe((res: any) => {
+      this.coreService.profile().subscribe((res: any) => {
         this.auth.user = res.data;
-        this.auth.validatingUser = false;
+        this.auth.isUserValidationInProgress = false;
       }, (error: AppError) => {
-        this.auth.validatingUser = false;
+        this.auth.isUserValidationInProgress = false;
         this.auth.logoutWithRedirect();
       });
     }

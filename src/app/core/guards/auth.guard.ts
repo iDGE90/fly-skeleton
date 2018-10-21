@@ -7,8 +7,7 @@ import {AuthenticateService} from '../services/authenticate.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private auth: AuthenticateService,
-              private router: Router) {
+  constructor(private auth: AuthenticateService) {
   }
 
   // This guard will always be fired after app bootstrap
@@ -19,10 +18,10 @@ export class AuthGuard implements CanActivate {
     if (this.auth.user !== null) {
       return true;
     } else {
-      if (this.auth.validatingUser) {
+      if (this.auth.isUserValidationInProgress) {
         return this.auth.validatingUserObservable();
       } else {
-        this.router.navigate(['/login']);
+        this.auth.redirectToLogin();
       }
     }
 

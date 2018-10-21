@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.auth.token = res.token; // Set token
 
         // Get user info with token
-        this.coreService.profile(1).subscribe((x: any) => {
+        this.coreService.profile().subscribe((x: any) => {
           this.auth.user = x.data; // Set user
           this.router.navigate(['/']); // Redirect to home page
           this.working = false;

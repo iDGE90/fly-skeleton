@@ -25,7 +25,7 @@ export class ErrorsInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {
             // Handle unauthorized response
-            this.auth.logoutWithRedirect();
+            this.auth.redirectToLogin();
           }
         }
       }),

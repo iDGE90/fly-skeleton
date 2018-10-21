@@ -8,10 +8,10 @@ import {Router} from '@angular/router';
 })
 export class AuthenticateService {
   // On app bootstrap if there is token, app wil try to get the user, without changing route
-  // If in process of validating this _validatingUser will be set to true
-  private _validatingUser = false;
+  // If in process of validating this _isUserValidationInProgress will be set to true
+  private _isUserValidationInProgress = false;
 
-  // Used in auth guard to determine how validating finished
+  // Used in auth guard to determine when validating finished
   $validatingUserUpdate = new Subject<boolean>();
 
   // User data
@@ -51,12 +51,12 @@ export class AuthenticateService {
     }
   }
 
-  get validatingUser(): boolean {
-    return this._validatingUser;
+  get isUserValidationInProgress(): boolean {
+    return this._isUserValidationInProgress;
   }
 
-  set validatingUser(v: boolean) {
-    this._validatingUser = v;
+  set isUserValidationInProgress(v: boolean) {
+    this._isUserValidationInProgress = v;
     this.$validatingUserUpdate.next(!!this.user);
   }
 
@@ -71,5 +71,13 @@ export class AuthenticateService {
   logoutWithRedirect() {
     this.logout();
     this.router.navigate(['/']);
+  }
+
+  redirectToLogin(logout = true) {
+    if (logout) {
+      this.logout();
+    }
+
+    this.router.navigate(['/login']);
   }
 }

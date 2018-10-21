@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {catchError} from 'rxjs/internal/operators';
 import {AppErrorHandler} from 'core/services/app-error-handler.service';
+import {Observable} from 'rxjs/index';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,19 @@ export class CoreService {
   constructor(private http: HttpClient) {
   }
 
-  login(data) {
+  login(data): Observable {
     return this.http.post(environment.baseUrl + 'login', data);
   }
 
-  register(data) {
+  register(data): Observable {
     return this.http.post(environment.baseUrl + 'register', data);
   }
 
-  profile(id) {
-    return this.http.get(environment.baseUrl + 'users/' + id);
+  profile(): Observable {
+    return this.http.get(environment.baseUrl + 'users/1');
   }
 
-  list() {
+  list(): Observable {
     return this.http.get(environment.baseUrl + 'unknown');
   }
 }

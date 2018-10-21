@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.working = true;
 
-    this.coreService.profile(1).subscribe((res: any) => {
+    this.coreService.profile().subscribe((res: any) => {
       this.user = res.data;
       console.log(this.user);
       this.working = false;
