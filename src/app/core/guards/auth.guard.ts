@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
       if (this.auth.isUserValidationInProgress) {
         return this.auth.validatingUserObservable();
       } else {
-        this.auth.redirectToLogin();
+        this.auth.logoutWithRedirect();
       }
     }
 

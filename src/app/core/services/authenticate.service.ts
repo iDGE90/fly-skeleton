@@ -68,12 +68,7 @@ export class AuthenticateService {
     this.user = null;
   }
 
-  logoutWithRedirect() {
-    this.logout();
-    this.router.navigate(['/']);
-  }
-
-  redirectToLogin(logout = true) {
+  logoutWithRedirect(logout = true) {
     if (logout) {
       this.logout();
     }
