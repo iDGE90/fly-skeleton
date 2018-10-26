@@ -1,6 +1,6 @@
 # Fly Skeleton
 
-*Fly Skeleton* is a skeleton Angular 6 application, with basic authentication set in place. 
+*Fly Skeleton* is a skeleton Angular 7 application, with basic authentication set in place. 
 
 ### Contents
 - [Installing](#installing)
