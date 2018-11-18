@@ -16,7 +16,9 @@ export class Utilities {
       });
     }
 
-    Utilities.updateFromControl(form); // If control is form control
+    if (form instanceof FormControl) {
+      Utilities.updateFromControl(form); // If control is form control
+    }
   }
 
   // Update form control as touched

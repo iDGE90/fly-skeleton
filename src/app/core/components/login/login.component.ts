@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CoreService} from 'core/services/core.service';
 import {AppError} from 'core/errors/app-error';
 import {AuthenticateService} from 'core/services/authenticate.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Utilities} from "shared/services/utilties";
 
 @Component({
   selector: 'app-login',
@@ -16,17 +17,22 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required])
   });
 
+  backUrl = null;
   working = false;
 
   constructor(private coreService: CoreService,
               private auth: AuthenticateService,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    if (this.route.snapshot.queryParamMap.has('back')) {
+      this.backUrl = this.route.snapshot.queryParamMap.get('back');
+    }
   }
 
-  submit() {
+  submit(): void {
     if (this.loginForm.valid && !this.working) {
       this.working = true;
 
@@ -37,7 +43,13 @@ export class LoginComponent implements OnInit {
         // Get user info with token
         this.coreService.profile().subscribe((x: any) => {
           this.auth.user = x.data; // Set user
-          this.router.navigate(['/']); // Redirect to home page
+
+          if (this.backUrl) {
+            this.router.navigateByUrl(this.backUrl); // Redirect to url before guard redirected to login
+          } else {
+            this.router.navigate(['/']); // Redirect to home page
+          }
+
           this.working = false;
         }, (error: AppError) => {
           console.log('User error: ', error);
@@ -47,7 +59,21 @@ export class LoginComponent implements OnInit {
         console.log('Login error: ', error);
         this.working = false;
       });
+    } else {
+      Utilities.validateMixedForm(this.loginForm);
     }
+  }
+
+  get email(): AbstractControl {
+    return this.loginForm.get('email');
+  }
+
+  get password(): AbstractControl {
+    return this.loginForm.get('password');
+  }
+
+  isControlInvalid(c: AbstractControl): boolean {
+    return Utilities.isFormControlInvalid(c);
   }
 
 }

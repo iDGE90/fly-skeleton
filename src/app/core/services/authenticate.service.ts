@@ -68,11 +68,13 @@ export class AuthenticateService {
     this.user = null;
   }
 
-  logoutWithRedirect(logout = true) {
-    if (logout) {
-      this.logout();
-    }
+  logoutWithRedirect(backUrl: string = null) {
+    this.logout();
 
-    this.router.navigate(['/login']);
+    if (backUrl) {
+      this.router.navigate(['/login'], {queryParams: {back: backUrl}});
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 }
