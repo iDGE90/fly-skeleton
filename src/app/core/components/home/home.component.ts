@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CoreService} from '../../services/core.service';
+import {CoreService} from 'core/services/core.service';
 import {AppError} from 'core/errors/app-error';
 
 @Component({

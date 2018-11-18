@@ -1,11 +1,11 @@
 import {ErrorHandler, Injectable} from '@angular/core';
 import {throwError} from 'rxjs/index';
-import {BadRequest} from '../errors/bad-request';
-import {Unauthorized} from '../errors/unauthorized';
-import {Forbidden} from '../errors/forbidden';
-import {NotFound} from '../errors/not-found';
-import {ServerError} from '../errors/server-error';
-import {AppError} from '../errors/app-error';
+import {BadRequest} from 'core/errors/bad-request';
+import {Unauthorized} from 'core/errors/unauthorized';
+import {Forbidden} from 'core/errors/forbidden';
+import {NotFound} from 'core/errors/not-found';
+import {ServerError} from 'core/errors/server-error';
+import {AppError} from 'core/errors/app-error';
 
 @Injectable({
   providedIn: 'root'
